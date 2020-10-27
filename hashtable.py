@@ -8,14 +8,20 @@ for i in range(20):
 def addMember(currentMember):
     hashValue = ((members[currentMember][0])**2) % size
     foundAPlace = False
+    isDupe = True
     i = 0
     while foundAPlace == False:
-        if hashTable[hashValue][i] == []:
-            hashTable[hashValue][i] = members[currentMember]
-            hashPositions[members[currentMember][1]] = hashValue
-            foundAPlace = True
+        if members[currentMember] in hashTable[hashValue]:
+            return print(members[currentMember][1], "is already in the table")
         else:
-            i += 1
+            isDupe = False
+        if isDupe == False:
+            if hashTable[hashValue][i] == []:
+                hashTable[hashValue][i] = members[currentMember]
+                hashPositions[members[currentMember][1]] = hashValue
+                foundAPlace = True
+            else:
+                i += 1
     return hashTable, hashValue
 def lookUpMember(name):
     position = None
@@ -36,3 +42,6 @@ for i in range(len(hashTable)):
     print(hashTable[i])
 for i in range(len(members)):
     lookUpMember(members[i][1])
+members.append([124,"Nguyen","HD12"])
+lastMember = len(members)-1
+addMember(lastMember)
