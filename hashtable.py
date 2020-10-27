@@ -19,7 +19,6 @@ def addMember(currentMember):
     return hashTable, hashValue
 def lookUpMember(name):
     position = None
-    posFound = False
     location = hashTable[hashPositions[name]]
     i = 1
     while position == None:
